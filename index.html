@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Zakir Hussain — Portfolio</title>
+<meta name="description" content="Portfolio of Ahmed Zakir Hussain, CS undergrad building full-stack apps and dev tooling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- tab bar acts as the site nav, styled like open editor tabs -->
+  <header class="tabbar">
+    <div class="logo" aria-hidden="true">&lt;AZH/&gt;</div>
+    <nav class="tabs">
+      <a href="#hero" class="tab active">index.html</a>
+      <a href="#about" class="tab"><span class="dot dot-about"></span>about.css</a>
+      <a href="#skills" class="tab"><span class="dot dot-skills"></span>skills.json</a>
+      <a href="#projects" class="tab"><span class="dot dot-projects"></span>projects.js</a>
+      <a href="#contact" class="tab"><span class="dot dot-contact"></span>contact.md</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="section hero">
+      <span class="line-no">01</span>
+      <div class="section-inner">
+        <p class="terminal-line">
+          <span class="prompt">ahmed@crescent</span><span class="punct">:</span><span class="path">~</span><span class="punct">$ </span><span class="cmd typewriter">whoami</span>
+        </p>
+        <h1 class="name">Ahmed Zakir Hussain</h1>
+        <p class="tagline">
+          Second-year CSE undergrad who ships full-stack projects, hackathon builds,
+          and the occasional line of code that only makes sense at 2am.
+        </p>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary">cd ./projects</a>
+          <a href="mailto:ahmedzakir92007@gmail.com" class="btn btn-ghost">send_email()</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
+      <span class="line-no">02</span>
+      <div class="section-inner">
+        <h2 class="section-title">about<span class="accent">.css</span></h2>
+        <div class="about-grid">
+          <p class="about-text">
+            I'm a second-year Computer Science and Engineering student at
+            <strong>B.S. Abdur Rahman Crescent Institute of Science &amp; Technology</strong>,
+            Chennai. Most of what I know I picked up by building things —
+            a portfolio site, a couple of hackathon projects, and a lot of
+            broken code along the way that eventually worked. Right now I'm
+            looking for a developer, programmer, or QA/testing internship
+            where I can actually contribute instead of just watching from
+            the sidelines.
+          </p>
+          <ul class="facts">
+            <li><span class="key">education</span><span class="val">B.Tech CSE — 2nd Year</span></li>
+            <li><span class="key">based_in</span><span class="val">Chennai, Tamil Nadu</span></li>
+            <li><span class="key">looking_for</span><span class="val">Dev / Programmer / QA Intern</span></li>
+            <li><span class="key">status</span><span class="val">open_to_work: true</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section">
+      <span class="line-no">03</span>
+      <div class="section-inner">
+        <h2 class="section-title">skills<span class="accent">.json</span></h2>
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <h3>languages</h3>
+            <ul class="tag-list">
+              <li>C</li><li>Python</li><li>Java</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>web</h3>
+            <ul class="tag-list">
+              <li>HTML</li><li>CSS</li><li>Flexbox</li><li>Grid</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>tools</h3>
+            <ul class="tag-list">
+              <li>Git</li><li>GitHub</li><li>VS Code</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>coursework</h3>
+            <ul class="tag-list">
+              <li>Engineering Graphics</li><li>OOP (Java)</li>
+              <li>Data Structures*</li><li>Operating Systems*</li>
+            </ul>
+            <p class="note">* in progress</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
+      <span class="line-no">04</span>
+      <div class="section-inner">
+        <h2 class="section-title">projects<span class="accent">.js</span></h2>
+
+        <div class="projects-grid">
+
+          <article class="project-card">
+            <div class="project-head">
+              <h3>Personal Portfolio Website</h3>
+              <span class="stack">HTML · CSS · GitHub Pages</span>
+            </div>
+            <p>
+              The single-page site you're looking at right now. Built the layout
+              with Flexbox and Grid, kept one consistent color and type system
+              across every section, and deployed it straight from GitHub Pages
+              so it's easy to share with recruiters.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-head">
+              <h3>GeoAttend AI</h3>
+              <span class="stack">React.js · Node.js · Express · MongoDB</span>
+            </div>
+            <p>
+              A full-stack, contactless attendance platform built for a hackathon,
+              swapping out failure-prone fingerprint scanners for GPS geo-fencing
+              and AI facial recognition. Helped design the anti-spoofing layer —
+              fake-GPS detection and liveness checks — and contributed to the
+              cloud sync pipeline that pushes verified attendance straight into
+              payroll, no manual reconciliation needed.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-head">
+              <h3>IntentForge</h3>
+              <span class="stack">React 19 · TypeScript · TanStack Start · PostgreSQL</span>
+            </div>
+            <p>
+              A Gen AI content-transformation platform built for Smart India
+              Hackathon 2026. It extracts facts from source documents and
+              generates outputs that are claim-checked against the source
+              before anything gets approved and exported. Worked on the
+              React 19 / TanStack Start frontend, backed by managed
+              PostgreSQL with row-level security.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section">
+      <span class="line-no">05</span>
+      <div class="section-inner">
+        <h2 class="section-title">contact<span class="accent">.md</span></h2>
+        <div class="contact-box">
+          <p class="contact-comment"># reach out, I reply faster than my code compiles</p>
+          <ul class="contact-list">
+            <li><span class="key">email</span><a href="mailto:ahmedzakir92007@gmail.com">ahmedzakir92007@gmail.com</a></li>
+            <li><span class="key">phone</span><a href="tel:+917010122130">+91 70101 22130</a></li>
+            <li><span class="key">linkedin</span><a href="https://linkedin.com/in/ahmed-zakir-hussain" target="_blank" rel="noopener">linkedin.com/in/ahmed-zakir-hussain</a></li>
+            <li><span class="key">github</span><a href="https://github.com/laffincloud" target="_blank" rel="noopener">github.com/laffincloud</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>built with html &amp; css, no frameworks &mdash; deployed on github pages &middot; &copy; 2026 Ahmed Zakir Hussain</p>
+  </footer>
+
+</body>
+</html>
