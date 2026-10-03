@@ -4,8 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahmed Zakir Hussain — Portfolio</title>
+<meta name="theme-color" content="#12141c">
+<meta name="color-scheme" content="dark">
 <meta name="description" content="Portfolio of Ahmed Zakir Hussain, CS undergrad building full-stack apps and dev tooling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2312141c'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%23e8b96a'%3EA%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -14,8 +18,8 @@
   <!-- tab bar acts as the site nav, styled like open editor tabs -->
   <header class="tabbar">
     <div class="logo" aria-hidden="true">&lt;AZH/&gt;</div>
-    <nav class="tabs">
-      <a href="#hero" class="tab active">index.html</a>
+    <nav class="tabs" aria-label="Primary">
+      <a href="#hero" class="tab active" aria-current="true">index.html</a>
       <a href="#about" class="tab"><span class="dot dot-about"></span>about.css</a>
       <a href="#skills" class="tab"><span class="dot dot-skills"></span>skills.json</a>
       <a href="#projects" class="tab"><span class="dot dot-projects"></span>projects.js</a>
@@ -27,7 +31,7 @@
 
     <!-- ============ HERO ============ -->
     <section id="hero" class="section hero">
-      <span class="line-no">01</span>
+      <span class="line-no" aria-hidden="true">01</span>
       <div class="section-inner">
         <p class="terminal-line">
           <span class="prompt">ahmed@crescent</span><span class="punct">:</span><span class="path">~</span><span class="punct">$ </span><span class="cmd typewriter">whoami</span>
@@ -46,7 +50,7 @@
 
     <!-- ============ ABOUT ============ -->
     <section id="about" class="section">
-      <span class="line-no">02</span>
+      <span class="line-no" aria-hidden="true">02</span>
       <div class="section-inner">
         <h2 class="section-title">about<span class="accent">.css</span></h2>
         <div class="about-grid">
@@ -72,7 +76,7 @@
 
     <!-- ============ SKILLS ============ -->
     <section id="skills" class="section">
-      <span class="line-no">03</span>
+      <span class="line-no" aria-hidden="true">03</span>
       <div class="section-inner">
         <h2 class="section-title">skills<span class="accent">.json</span></h2>
         <div class="skills-grid">
@@ -113,7 +117,7 @@
 
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="section">
-      <span class="line-no">04</span>
+      <span class="line-no" aria-hidden="true">04</span>
       <div class="section-inner">
         <h2 class="section-title">projects<span class="accent">.js</span></h2>
 
@@ -168,7 +172,7 @@
 
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="section">
-      <span class="line-no">05</span>
+      <span class="line-no" aria-hidden="true">05</span>
       <div class="section-inner">
         <h2 class="section-title">contact<span class="accent">.md</span></h2>
         <div class="contact-box">
@@ -186,8 +190,54 @@
   </main>
 
   <footer class="footer">
-    <p>built with html &amp; css, no frameworks &mdash; deployed on github pages &middot; &copy; 2026 Ahmed Zakir Hussain</p>
+    <p>built with plain html, css &amp; a little js, no frameworks &mdash; deployed on github pages &middot; &copy; 2026 Ahmed Zakir Hussain</p>
   </footer>
+
+
+  <script>
+    /* highlights the nav tab for the section currently on screen */
+    (function () {
+      var bar = document.querySelector('.tabbar');
+      var tabs = document.querySelectorAll('.tab');
+      var sections = document.querySelectorAll('main section[id]');
+      var tabFor = {};
+      tabs.forEach(function (t) { tabFor[t.getAttribute('href').slice(1)] = t; });
+
+      function setActive(id) {
+        var next = tabFor[id];
+        if (!next || next.classList.contains('active')) return;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.removeAttribute('aria-current'); });
+        next.classList.add('active');
+        next.setAttribute('aria-current', 'true');
+        // on narrow screens the tab bar scrolls sideways: keep the active tab visible
+        if (bar.scrollWidth > bar.clientWidth) {
+          bar.scrollTo({ left: next.offsetLeft - 48, behavior: 'smooth' });
+        }
+      }
+
+      // current section = the last one whose top has scrolled past a line near the top of the screen
+      function update() {
+        ticking = false;
+        var line = Math.max(bar.offsetHeight + 24, window.innerHeight * 0.25);
+        var current = sections[0];
+        sections.forEach(function (s) {
+          if (s.getBoundingClientRect().top <= line) current = s;
+        });
+        // the last section can be too short to ever reach that line, so handle the page bottom
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+          current = sections[sections.length - 1];
+        }
+        setActive(current.id);
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
 
 </body>
 </html>
